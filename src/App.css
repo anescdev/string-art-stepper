@@ -1,0 +1,9 @@
+header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+    justify-content: space-between;
+}
+header > * {
+    padding: 10px;
+}

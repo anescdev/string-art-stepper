@@ -1,0 +1,7 @@
+.viewer {
+    display: flex;
+    flex-flow: column nowrap;
+}
+.viewer .step {
+    font-size: 3em;
+}
