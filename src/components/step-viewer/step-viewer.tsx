@@ -1,13 +1,13 @@
 import { use, useEffect, useState } from "react"
 import { StringArtStepsContext } from "../../contexts"
 import styles from "./step-viewer.module.css"
-import { LOCAL_STORAGE_KEY_STEP } from "../../data/helper";
+import { saveStep } from "./helper";
 
 export default function StepViewer({ step = 0 }: { step?: number }) {
     const steps = use(StringArtStepsContext);
     const [currentStep, setCurrentStep] = useState(step);
     useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY_STEP, currentStep.toString())
+        saveStep(currentStep);
     }, [currentStep]);
     const previousButton = () => {
         if (currentStep <= 0) return;
@@ -34,3 +34,4 @@ export default function StepViewer({ step = 0 }: { step?: number }) {
         </div>
     )
 }
+

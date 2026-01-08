@@ -2,7 +2,6 @@ export const INDEXED_DB_NAME = "string-art-stepper-db";
 export const INDEXED_DB_VERSION = 1;
 export const INDEXED_DB_STRING_ART_INFO = "string-art-info";
 export const INDEXED_DB_STRING_ART_STEPS = "string-art-steps";
-export const LOCAL_STORAGE_KEY_STEP = "string-art-step";
 
 export function getDatabaseInstance(): Promise<IDBDatabase> {
     return new Promise((resolve, reject) => {

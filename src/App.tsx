@@ -1,12 +1,11 @@
 import './App.css'
 import DataProvider from './components/data-provider'
+import { fetchSavedStep } from './components/step-viewer/helper'
 import StepViewer from './components/step-viewer/step-viewer'
 import StringArtForm from './components/string-art-form/string-art-form'
-import { LOCAL_STORAGE_KEY_STEP } from './data/helper'
 
 function App() {
-  const savedStep = localStorage.getItem(LOCAL_STORAGE_KEY_STEP);
-  const step = savedStep ? parseInt(savedStep) : 0;
+  const step = fetchSavedStep()
 
   return (
     <DataProvider>
