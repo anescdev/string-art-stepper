@@ -1,3 +1,15 @@
+@font-face {
+    font-family: "OpenSans";
+    src: url(/fonts/open_sans/OpenSans-VariableFont_wdth\,wght.ttf)
+}
+@font-face {
+    font-family: "OpenSans";
+    src: url(/fonts/open_sans/OpenSans-Italic-VariableFont_wdth\,wght.ttf);
+    font-style: italic;
+}
+* {
+    font-family: "OpenSans", sans-serif;
+}
 .hide {
     display: none;
 }

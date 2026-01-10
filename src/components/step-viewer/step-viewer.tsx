@@ -28,7 +28,7 @@ export default function StepViewer({ step = 0 }: { step?: number }) {
 
     return (
         <div className={styles.viewer} onKeyDown={onKeyPress}>
-            <span className={styles.step}>{steps[currentStep].from + 1} → {steps[currentStep].to + 1}</span>
+            <span className={styles.step}>Step {currentStep + 1}: {steps[currentStep].from + 1} → {steps[currentStep].to + 1}</span>
             <span><button disabled={currentStep === 0} onClick={previousButton}>Previous</button>
                 <button disabled={currentStep === steps.length - 1} onClick={nextButton}>Next</button></span>
         </div>
