@@ -8,9 +8,9 @@ import loadedData from "../data/load";
 
 export default function DataProvider({ children }: { children: React.ReactNode }) {
     const stringArtData = use(loadedData)
-    // const stringArtData = null as { info: StringArtInfo, steps: StringArtStep[] } | null;
     const [stringArtInfo, setStringArtInfo] = useState<StringArtInfo | null>(stringArtData?.info ?? null);
     const [stringArtSteps, setStringArtSteps] = useState<StringArtStep[]>(stringArtData?.steps ?? []);
+
     useEffect(() => {
         const handler = (event: Event) => {
             const fileUploadedEvent = event as FileUploadedEvent;

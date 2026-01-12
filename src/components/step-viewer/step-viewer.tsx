@@ -17,17 +17,22 @@ export default function StepViewer({ step = 0 }: { step?: number }) {
         if (currentStep >= steps.length - 1) return;
         setCurrentStep(currentStep => currentStep + 1);
     }
-    const onKeyPress = (e: React.KeyboardEvent) => {
-        console.log(e);
-        if (e.key === "ArrowLeft") {
-            previousButton();
-        } else if (e.key === "ArrowRight") {
-            nextButton();
+    useEffect(() => {
+        const keyboardHandler = (e: KeyboardEvent) => {
+            if (e.key === "ArrowLeft") {
+                previousButton();
+            } else if (e.key === "ArrowRight") {
+                nextButton();
+            }
         }
-    }
+        window.addEventListener("keydown", keyboardHandler);
+        return () => {
+            window.removeEventListener("keydown", keyboardHandler);
+        }
+    }, []);
 
     return (
-        <div className={styles.viewer} onKeyDown={onKeyPress}>
+        <div className={styles.viewer}>
             <span className={styles.step}>Step {currentStep + 1}: {steps[currentStep].from + 1} → {steps[currentStep].to + 1}</span>
             <span><button disabled={currentStep === 0} onClick={previousButton}>Previous</button>
                 <button disabled={currentStep === steps.length - 1} onClick={nextButton}>Next</button></span>
