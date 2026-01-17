@@ -1,0 +1,12 @@
+.stringArtForm {
+    background-color: var(--color-neutral-100);
+    border: 3px dashed var(--color-neutral-500);
+    border-radius: var(--radius);
+    color: var(--color-text-dark);
+    padding: calc(var(--padding) * 3);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: fit-content;
+    margin: var(--padding) auto auto auto;
+}

@@ -1,7 +1,69 @@
 .viewer {
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
+    position: relative;
 }
+
+.viewer .stepCounter {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary-500);
+    border-radius: 0 0 8rem 8rem;
+    width: 9rem;
+    height: 4.5rem;
+    color: var(--color-text-dark);
+}
+
+.viewer .stepCounter span:nth-child(1) {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.viewer .stepCounter span:nth-child(2) {
+    font-size: 30px;
+    line-height: 1rem;
+}
+
 .viewer .step {
-    font-size: 3em;
+    font-size: 128px;
+    font-weight: bolder;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    color: var(--color-neutral-600);
+}
+
+.step :nth-child(1) {
+    color: var(--color-neutral-700);
+}
+
+.step :nth-child(2),
+.step :nth-child(3) {
+    font-size: 64px;
+}
+
+.stepControls {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.stepControls button {
+    background-color: transparent;
+    border: none;
+    font-size: 48px;
+    cursor: pointer;
+}
+
+.stepControls>button:nth-child(1) {
+    color: var(--color-secondary-800);
+}
+
+.stepControls>button:nth-child(3) {
+    color: var(--color-primary-400);
 }
