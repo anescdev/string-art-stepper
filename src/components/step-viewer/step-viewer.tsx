@@ -13,12 +13,10 @@ export default function StepViewer({ step = 0, stepsData }: { step?: number, ste
         saveStep(currentStep);
     }, [currentStep]);
     const previousButton = () => {
-        if (currentStep <= 0) return;
-        setCurrentStep(currentStep => currentStep - 1);
+        setCurrentStep(currentStep => Math.max(currentStep - 1, 0));
     }
     const nextButton = () => {
-        if (currentStep >= steps.length - 1) return;
-        setCurrentStep(currentStep => currentStep + 1);
+        setCurrentStep(currentStep => Math.min(currentStep + 1, steps.length - 1));
     }
     useEffect(() => {
         const keyboardHandler = (e: KeyboardEvent) => {
