@@ -26,6 +26,9 @@ importers:
       config:
         specifier: link:@types/@vitest/config
         version: link:@types/@vitest/config
+      motion:
+        specifier: ^12.26.2
+        version: 12.26.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react:
         specifier: ^19.2.0
         version: 19.2.3
@@ -1325,6 +1328,20 @@ packages:
     resolution: {integrity: sha512-gIXjKqtFuWEgzFRJA9WCQeSJLZDjgJUOMCMzxtvFq/37KojM1BFGufqsCy0r4qSQmYLsZYMeyRqzIWOMup03sw==}
     engines: {node: '>=14'}
 
+  framer-motion@12.26.2:
+    resolution: {integrity: sha512-lflOQEdjquUi9sCg5Y1LrsZDlsjrHw7m0T9Yedvnk7Bnhqfkc89/Uha10J3CFhkL+TCZVCRw9eUGyM/lyYhXQA==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -1643,6 +1660,26 @@ packages:
   modern-tar@0.7.3:
     resolution: {integrity: sha512-4W79zekKGyYU4JXVmB78DOscMFaJth2gGhgfTl2alWE4rNe3nf4N2pqenQ0rEtIewrnD79M687Ouba3YGTLOvg==}
     engines: {node: '>=18.0.0'}
+
+  motion-dom@12.26.2:
+    resolution: {integrity: sha512-KLMT1BroY8oKNeliA3JMNJ+nbCIsTKg6hJpDb4jtRAJ7nCKnnpg/LTq/NGqG90Limitz3kdAnAVXecdFVGlWTw==}
+
+  motion-utils@12.24.10:
+    resolution: {integrity: sha512-x5TFgkCIP4pPsRLpKoI86jv/q8t8FQOiM/0E8QKBzfMozWHfkKap2gA1hOki+B5g3IsBNpxbUnfOum1+dgvYww==}
+
+  motion@12.26.2:
+    resolution: {integrity: sha512-2Q6g0zK1gUJKhGT742DAe42LgietcdiJ3L3OcYAHCQaC1UkLnn6aC8S/obe4CxYTLAgid2asS1QdQ/blYfo5dw==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   mrmime@2.0.1:
     resolution: {integrity: sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ==}
@@ -3573,6 +3610,15 @@ snapshots:
       cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
+  framer-motion@12.26.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      motion-dom: 12.26.2
+      motion-utils: 12.24.10
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+
   fsevents@2.3.3:
     optional: true
 
@@ -3846,6 +3892,20 @@ snapshots:
   mitt@3.0.1: {}
 
   modern-tar@0.7.3: {}
+
+  motion-dom@12.26.2:
+    dependencies:
+      motion-utils: 12.24.10
+
+  motion-utils@12.24.10: {}
+
+  motion@12.26.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      framer-motion: 12.26.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
 
   mrmime@2.0.1: {}
 
