@@ -18,6 +18,7 @@ header {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    z-index: 10;
 }
 
 main {
@@ -36,6 +37,7 @@ footer {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    z-index: 10;
 }
 p > a {
     color: var(--color-text-light);

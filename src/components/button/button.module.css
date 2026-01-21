@@ -6,6 +6,12 @@
     font-size: 1.05em;
     cursor: pointer;
     background-color: var(--color-primary-400);
+    transition: background-color 0.1s ease-in;
+}
+
+.button:disabled {
+    background-color: var(--color-primary-100);
+    cursor: not-allowed;
 }
 
 .button:hover {
