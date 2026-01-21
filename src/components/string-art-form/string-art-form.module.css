@@ -10,3 +10,7 @@
     width: fit-content;
     margin: var(--padding) auto auto auto;
 }
+
+.hide {
+    display: none;
+}

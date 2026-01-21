@@ -68,3 +68,18 @@
 .stepControls>button:nth-child(3) {
     color: var(--color-primary-400);
 }
+
+@media screen and (max-width: 600px) {
+    .viewer .step {
+        font-size: 80px;
+    }
+
+    .step .arrow,
+    .step .to {
+        font-size: 40px;
+    }
+
+    .stepControls button {
+        font-size: 28px;
+    }
+}

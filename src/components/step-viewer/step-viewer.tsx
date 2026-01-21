@@ -58,9 +58,9 @@ export default function StepViewer({ step = 0, stepsData }: { step?: number, ste
                         exit={{ opacity: 0, x: direction.get() * -65 }}
                         transition={{ type: "spring", bounce: 0.25, visualDuration: 0.3 }}
                         onAnimationStart={() => animating.current = true} onAnimationComplete={() => animating.current = false}>
-                        <motion.span className="from">{steps[currentStep].from + 1}</motion.span>
-                        <motion.span>→</motion.span>
-                        <motion.span className="to">{steps[currentStep].to + 1}</motion.span>
+                        <motion.span className={styles.from}>{steps[currentStep].from + 1}</motion.span>
+                        <motion.span className={styles.arrow}>→</motion.span>
+                        <motion.span className={styles.to}>{steps[currentStep].to + 1}</motion.span>
                     </motion.div>
                 </AnimatePresence>
                 <button disabled={currentStep >= steps.length - 1} onClick={nextButton}><FontAwesomeIcon icon={faAngleRight} /></button>

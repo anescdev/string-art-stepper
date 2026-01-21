@@ -37,8 +37,16 @@ footer {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    gap: var(--padding);
     z-index: 10;
 }
 p > a {
     color: var(--color-text-light);
+}
+@media screen and (max-width: 600px) {
+    footer {
+        flex-flow: column nowrap;
+        align-items: center;
+        text-align: center;
+    }
 }
