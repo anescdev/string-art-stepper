@@ -50,7 +50,7 @@ export default function StepViewer({ step = 0, stepsData }: { step?: number, ste
                 <motion.span key={currentStep} initial={{ scale: 0.6 }} animate={{ scale: 1 }} layout>{currentStep + 1}</motion.span>
             </motion.div>
             <div className={styles.stepControls}>
-                <button disabled={currentStep <= 0} onClick={previousButton}><FontAwesomeIcon icon={faAngleLeft} /></button>
+                <button disabled={currentStep <= 0} onClick={previousButton} className={styles.previousButton}><FontAwesomeIcon icon={faAngleLeft} /></button>
                 <AnimatePresence initial={false} mode="popLayout" >
                     <motion.div key={currentStep} className={styles.step}
                         initial={{ opacity: 1, x: direction.get() * 300 }}
@@ -63,7 +63,7 @@ export default function StepViewer({ step = 0, stepsData }: { step?: number, ste
                         <motion.span className={styles.to}>{steps[currentStep].to + 1}</motion.span>
                     </motion.div>
                 </AnimatePresence>
-                <button disabled={currentStep >= steps.length - 1} onClick={nextButton}><FontAwesomeIcon icon={faAngleRight} /></button>
+                <button disabled={currentStep >= steps.length - 1} onClick={nextButton} className={styles.nextButton}><FontAwesomeIcon icon={faAngleRight} /></button>
             </div>
         </div>
     )

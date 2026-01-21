@@ -59,14 +59,36 @@
     border: none;
     font-size: 48px;
     cursor: pointer;
+    transition: color 0.1s ease-in;
 }
 
-.stepControls>button:nth-child(1) {
+.stepControls .previousButton {
     color: var(--color-secondary-800);
 }
 
-.stepControls>button:nth-child(3) {
+.stepControls button:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.stepControls .previousButton {
+    color: var(--color-secondary-800);
+}
+.stepControls .previousButton:hover {
+    color: var(--color-secondary-700);
+}
+.stepControls .previousButton:active {
+    color: var(--color-secondary-900);
+}
+
+.stepControls .nextButton {
     color: var(--color-primary-400);
+}
+.stepControls .nextButton:hover {
+    color: var(--color-primary-300);
+}
+.stepControls .nextButton:active {
+    color: var(--color-primary-500);
 }
 
 @media screen and (max-width: 600px) {
