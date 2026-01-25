@@ -1,0 +1,19 @@
+.dragArea {
+    position: relative;
+}
+
+.dragArea.dragging::after {
+    position: absolute;
+    top: -1rem;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 1.5rem);
+    border: 2px dashed transparent;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: background-color 0.15s, border-color 0.15s;
+    content: "";
+    border-color: var(--color-neutral-600);
+    background-color: var(--color-neutral-300);
+    opacity: 0.6;
+}
