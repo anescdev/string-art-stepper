@@ -4,9 +4,10 @@ type DragAreaProps = {
     children?: ReactNode
     onDropFiles?: (files: File[]) => void
     accept?: string[]
+    disabled?: boolean
 }
 
-export default function DragArea({ children, onDropFiles, accept }: DragAreaProps) {
+export default function DragArea({ children, onDropFiles, accept, disabled }: DragAreaProps) {
     const [dragging, setDragging] = useState(false);
     const onDrop = (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault()
@@ -28,8 +29,8 @@ export default function DragArea({ children, onDropFiles, accept }: DragAreaProp
         setDragging(false);
     }
     return (<div
-        onDrop={onDrop}
-        onDragOver={onDragOver}
-        onDragLeave={onDragLeave}
-        className={`${style.dragArea} ${dragging ? style.dragging : ""}`}>{children}</div>)
+        onDrop={disabled ? undefined : onDrop}
+        onDragOver={disabled ? undefined : onDragOver}
+        onDragLeave={disabled ? undefined : onDragLeave}
+        className={`${style.dragArea} ${dragging && !disabled ? style.dragging : ""}`}>{children}</div>)
 }
