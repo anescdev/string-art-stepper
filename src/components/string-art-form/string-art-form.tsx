@@ -23,7 +23,7 @@ export default function StringArtForm() {
       <h2>Drag the JSON file here</h2>
       <p>or click here for select the file</p>
       <input type="file" ref={fileInputRef} className={style.hide} onChange={onChangeFile} />
-      <Button onClick={uploadFile} icon={faUpload} label="Upload file"/>
+      <Button onClick={uploadFile} iconLeft={faUpload} label="Upload file"/>
     </article>
   );
 }

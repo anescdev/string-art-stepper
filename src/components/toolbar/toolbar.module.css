@@ -1,0 +1,7 @@
+.toolbar {
+    background-color: var(--color-neutral-200);
+    display: flex;
+    flex-flow: row wrap;
+    padding: calc(var(--padding) / 1.5);
+    gap: var(--spacing-2);
+}

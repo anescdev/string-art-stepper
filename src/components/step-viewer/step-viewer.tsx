@@ -1,13 +1,18 @@
 import { use, useEffect, useRef, useState } from "react"
 import { StringArtStepsContext } from "../../contexts"
 import styles from "./step-viewer.module.css"
-import { saveStep } from "./helper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import type { StringArtStep } from "../../@types/string-art-step";
 import { AnimatePresence, motion, useMotionValue } from 'motion/react'
+import { saveStep } from "../../data/steps-count";
 
-export default function StepViewer({ step = 0, stepsData }: { step?: number, stepsData?: StringArtStep[] }) {
+export type StepViewerProps = {
+    step?: number,
+    stepsData?: StringArtStep[]
+}
+
+export default function StepViewer({ step = 0, stepsData }: StepViewerProps) {
     const steps = stepsData ?? use(StringArtStepsContext);
     const [currentStep, setCurrentStep] = useState(step);
     const direction = useMotionValue<1 | -1>(1);
@@ -50,7 +55,13 @@ export default function StepViewer({ step = 0, stepsData }: { step?: number, ste
                 <motion.span key={currentStep} initial={{ scale: 0.6 }} animate={{ scale: 1 }} layout>{currentStep + 1}</motion.span>
             </motion.div>
             <div className={styles.stepControls}>
-                <button disabled={currentStep <= 0} onClick={previousButton} className={styles.previousButton}><FontAwesomeIcon icon={faAngleLeft} /></button>
+                <motion.button
+                    disabled={currentStep <= 0}
+                    onClick={previousButton}
+                    className={styles.previousButton}
+                    whileTap={{scale: 0.9}}>
+                    <FontAwesomeIcon icon={faAngleLeft} />
+                </motion.button>
                 <AnimatePresence initial={false} mode="popLayout" >
                     <motion.div key={currentStep} className={styles.step}
                         initial={{ opacity: 1, x: direction.get() * 300 }}
@@ -63,7 +74,13 @@ export default function StepViewer({ step = 0, stepsData }: { step?: number, ste
                         <motion.span className={styles.to}>{steps[currentStep].to + 1}</motion.span>
                     </motion.div>
                 </AnimatePresence>
-                <button disabled={currentStep >= steps.length - 1} onClick={nextButton} className={styles.nextButton}><FontAwesomeIcon icon={faAngleRight} /></button>
+                <motion.button
+                    disabled={currentStep >= steps.length - 1}
+                    onClick={nextButton}
+                    className={styles.nextButton}
+                    whileTap={{scale: 0.9}}>
+                    <FontAwesomeIcon icon={faAngleRight} />
+                </motion.button>
             </div>
         </div>
     )

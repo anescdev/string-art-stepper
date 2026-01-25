@@ -3,11 +3,13 @@ import type { StringArtInfo } from "../@types/string-art-info";
 import type { StringArtStep } from "../@types/string-art-step";
 import { FileUploadedEvent } from "../events/file-uploaded";
 import { StringArtInfoContext, StringArtStepsContext } from "../contexts";
-import { saveStringArtData } from "../data/save";
-import loadedData from "../data/load";
+import { ClearedDataEvent } from "../events/cleared-data";
+import { loadedStringArtData, saveStringArtData } from "../data/steps-file";
 
-export default function DataProvider({ children }: { children: React.ReactNode }) {
-    const stringArtData = use(loadedData)
+export type DataProviderProps = { children: React.ReactNode }
+
+export default function DataProvider({ children }: DataProviderProps) {
+    const stringArtData = use(loadedStringArtData)
     const [stringArtInfo, setStringArtInfo] = useState<StringArtInfo | null>(stringArtData?.info ?? null);
     const [stringArtSteps, setStringArtSteps] = useState<StringArtStep[]>(stringArtData?.steps ?? []);
 
@@ -38,6 +40,16 @@ export default function DataProvider({ children }: { children: React.ReactNode }
             document.removeEventListener(FileUploadedEvent.name, handler);
         }
     }, []);
+    useEffect(() => {
+        const handler = () => {
+            setStringArtInfo(null);
+            setStringArtSteps([]);
+        }
+        window.addEventListener(ClearedDataEvent.name, handler);
+        return () => {
+            window.removeEventListener(ClearedDataEvent.name, handler);
+        }
+    }, [])
     return (
         <Suspense fallback={<div>Loading...</div>}>
             <StringArtInfoContext value={stringArtInfo}>

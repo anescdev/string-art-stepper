@@ -7,6 +7,10 @@
     cursor: pointer;
     background-color: var(--color-primary-400);
     transition: background-color 0.1s ease-in;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    flex-wrap: nowrap;
 }
 
 .button:disabled {

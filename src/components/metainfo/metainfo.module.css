@@ -1,0 +1,13 @@
+.infoBox {
+    background-color: var(--color-tertiary-400);
+    padding: var(--padding);
+    border-radius: var(--radius);
+    color: var(--color-text-light);
+    text-align: left;
+    z-index: 2;
+    position: absolute;
+}
+.infoBoxTitle {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-1);
+}

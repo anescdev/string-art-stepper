@@ -10,11 +10,12 @@
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-primary-500);
+    background-color: var(--color-primary-400);
     border-radius: 0 0 8rem 8rem;
     width: 9rem;
     height: 4.5rem;
     color: var(--color-text-dark);
+    box-shadow: var(--color-neutral-300) 1px 3.5px 6px 1px;
 }
 
 .viewer .stepCounter span:nth-child(1) {
@@ -48,7 +49,8 @@
 .stepControls {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: center;
+    gap: var(--spacing-5);
     align-items: center;
     position: relative;
     width: 100%;
@@ -82,13 +84,13 @@
 }
 
 .stepControls .nextButton {
-    color: var(--color-primary-400);
+    color: var(--color-primary-500);
 }
 .stepControls .nextButton:hover {
-    color: var(--color-primary-300);
+    color: var(--color-primary-400);
 }
 .stepControls .nextButton:active {
-    color: var(--color-primary-500);
+    color: var(--color-primary-600);
 }
 
 @media screen and (max-width: 600px) {

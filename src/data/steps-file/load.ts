@@ -1,8 +1,8 @@
-import type { StringArtInfo } from "../@types/string-art-info";
-import type { StringArtStep } from "../@types/string-art-step";
+import type { StringArtInfo } from "../../@types/string-art-info";
+import type { StringArtStep } from "../../@types/string-art-step";
 import { getDatabaseInstance, INDEXED_DB_STRING_ART_INFO, INDEXED_DB_STRING_ART_STEPS, promisifyRequest } from "./helper";
 
-async function loadStringArtData(): Promise<{ info: StringArtInfo, steps: StringArtStep[] } | null> {
+export async function loadStringArtData(): Promise<{ info: StringArtInfo, steps: StringArtStep[] } | null> {
     const db = await getDatabaseInstance();
     const transaction = db.transaction([INDEXED_DB_STRING_ART_INFO, INDEXED_DB_STRING_ART_STEPS], "readonly");
     const infoStore = transaction.objectStore(INDEXED_DB_STRING_ART_INFO);
@@ -26,4 +26,3 @@ async function loadStringArtData(): Promise<{ info: StringArtInfo, steps: String
     }
     
 }
-export default loadStringArtData();
