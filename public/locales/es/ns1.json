@@ -1,0 +1,26 @@
+{
+    "title": "String Art Stepper",
+    "description": "Crea diseños de arte de cuerda fácilmente usando la aplicación String Art Stepper",
+    "help": "Debes generar un archivo con <website>{{websiteName}}</website> para generar los pasos",
+    "developer": "Desarrollado por <developerWebsite>{{developer}}</developerWebsite>",
+    "fileForm": {
+        "label": "Arrastra el archivo JSON aquí",
+        "smallLabel": "o haz clic aquí para seleccionar el archivo",
+        "buttonLabel": "Subir archivo"
+    },
+    "toolbar": {
+        "clearStringArtButton": "Limpiar todos los datos",
+        "showMetadataButton": "Mostrar información"
+    },
+    "stepViewer": {
+        "stepsLabel": "Paso Nº:",
+        "previousStepButton": "Paso anterior",
+        "nextStepButton": "Siguiente paso"
+    },
+    "metadata": {
+        "title": "Información general",
+        "filenameLabel": "Nombre del archivo:",
+        "numNailsLabel": "Clavos:",
+        "numStepsLabel": "Pasos:"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "title": "String Art Stepper",
+    "description": "Create string art designs with ease using the String Art Stepper application.",
+    "help": "You must generate a file with <website>{{websiteName}}</website> to generate the steps.",
+    "developer": "Developed by <developerWebsite>{{developer}}</developerWebsite>",
+    "fileForm": {
+        "label": "Drag the JSON file here",
+        "smallLabel": "or click here to select the file",
+        "buttonLabel": "Upload file"
+    },
+    "toolbar": {
+        "clearStringArtButton": "Clear all data",
+        "showMetadataButton": "Show information"
+    },
+    "stepViewer": {
+        "stepsLabel": "Steps:",
+        "previousStepButton": "Previous Step",
+        "nextStepButton": "Next Step"
+    },
+    "metadata": {
+        "title": "General Information",
+        "filenameLabel": "File Name:",
+        "numNailsLabel": "Total nails:",
+        "numStepsLabel": "Total steps:"
+    }
+}

@@ -4,6 +4,7 @@ import { use, useState } from "react";
 import { StringArtInfoContext } from "../../contexts";
 import { clearSteps } from "../../data/steps-count";
 import { clearData } from "../../data/steps-file";
+import { useTranslation } from "react-i18next";
 
 export type ClearButtonProps = {
     onClearedData?: () => void,
@@ -11,6 +12,7 @@ export type ClearButtonProps = {
 }
 
 export default function ClearButton({ onClearedData, className }: ClearButtonProps) {
+    const [t] = useTranslation();
     const [haveData, setHaveData] = useState(use(StringArtInfoContext) ? true : false)
     const clearStringArtData = async () => {
         await clearData();
@@ -18,5 +20,5 @@ export default function ClearButton({ onClearedData, className }: ClearButtonPro
         setHaveData(false);
         if (onClearedData) onClearedData()
     }
-    return <Button disabled={!haveData} onClick={clearStringArtData} iconLeft={faTrash} label="Clear string art" variant="tertiary" className={className}></Button>
+    return <Button disabled={!haveData} onClick={clearStringArtData} iconLeft={faTrash} label={t("toolbar.clearStringArtButton")} variant="tertiary" className={className}></Button>
 }

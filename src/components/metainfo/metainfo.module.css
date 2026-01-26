@@ -6,6 +6,7 @@
     text-align: left;
     z-index: 2;
     position: absolute;
+    width: clamp(260px, 40vw, 60vh);
 }
 .infoBoxTitle {
     color: var(--color-text-light);

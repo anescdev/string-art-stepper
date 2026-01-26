@@ -7,6 +7,7 @@
     align-items: center;
     width: 100%;
     margin: var(--spacing-2) auto var(--spacing-2) auto;
+    text-align: center;
 }
 
 .hide {
