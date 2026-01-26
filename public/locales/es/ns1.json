@@ -1,7 +1,7 @@
 {
     "title": "String Art Stepper",
     "description": "Crea diseños de arte de cuerda fácilmente usando la aplicación String Art Stepper",
-    "help": "Debes generar un archivo con <website>{{websiteName}}</website> para generar los pasos",
+    "help": "Debes generar el archivo con <website>{{websiteName}}</website> para subir los pasos",
     "developer": "Desarrollado por <developerWebsite>{{developer}}</developerWebsite>",
     "fileForm": {
         "label": "Arrastra el archivo JSON aquí",

@@ -1,7 +1,7 @@
 {
     "title": "String Art Stepper",
     "description": "Create string art designs with ease using the String Art Stepper application.",
-    "help": "You must generate a file with <website>{{websiteName}}</website> to generate the steps.",
+    "help": "You must generate the file with <website>{{websiteName}}</website> to upload the steps.",
     "developer": "Developed by <developerWebsite>{{developer}}</developerWebsite>",
     "fileForm": {
         "label": "Drag the JSON file here",
