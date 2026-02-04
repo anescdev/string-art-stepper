@@ -1,18 +1,22 @@
-import './App.css'
-import DataProvider from './components/data-provider'
-import Toolbar from './components/toolbar/toolbar'
-import MainPage from './pages/main-page/main-page'
 import { Trans, useTranslation } from 'react-i18next'
+import { ToastContainer } from "react-toastify";
+
+import DataProvider from '@/components/data-provider/data-provider'
+import Toolbar from '@/components/toolbar/toolbar'
+import MainPage from '@/pages/main-page/main-page'
+
+import './App.css'
 
 function App() {
   const [t] = useTranslation()
 
   return (
     <>
-      <header>
+      <ToastContainer position="top-right" className="toast-container"/>
+        <header>
         <h1>{t("title")}</h1>
-        <h3>{t("description")}</h3>
-      </header>
+      <h3>{t("description")}</h3>
+    </header >
       <DataProvider>
         <Toolbar />
         <main>

@@ -19,8 +19,22 @@
     },
     "metadata": {
         "title": "General Information",
+        "noData": "No data available. Please upload a valid JSON file.",
         "filenameLabel": "File Name:",
         "numNailsLabel": "Total nails:",
         "numStepsLabel": "Total steps:"
+    },
+    "notifications": {
+        "error": {
+            "title": "Error",
+            "parsingFile": "Error parsing the file. Please ensure the file is valid.",
+            "clearStringArtErrorToast": "An error occurred while clearing all data."
+        },
+        "info": {
+            "title": "Information",
+            "dataCleared": "All file data has been cleared.",
+            "firstStepReachedToast": "You have reached the first step.",
+            "lastStepReachedToast": "You have reached the last step."
+        }
     }
 }

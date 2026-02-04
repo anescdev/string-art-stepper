@@ -1,5 +1,15 @@
-#root > :nth-child(2) {
+#root > :nth-child(3) {
     margin-top: var(--spacing-3);
+}
+
+.toast-container {
+    --toastify-color-light: var(--color-text-light);
+    --toastify-color-dark: var(--color-text-dark);
+    --toastify-color-info: var(--color-secondary-500);
+    --toastify-color-success: var(--color-success-border);
+    --toastify-color-warning: var(--color-warning-border);
+    --toastify-color-error: var(--color-error-text);
+    --toastify-color-transparent: rgba(255, 255, 255, 0.7);
 }
 
 header {

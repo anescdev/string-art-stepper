@@ -19,8 +19,22 @@
     },
     "metadata": {
         "title": "Información general",
+        "noData": "No hay datos disponibles. Por favor, sube un archivo JSON válido.",
         "filenameLabel": "Nombre del archivo:",
         "numNailsLabel": "Clavos:",
         "numStepsLabel": "Pasos:"
+    },
+    "notifications": {
+        "error": {
+            "title": "Error",
+            "parsingFile": "Error al analizar el archivo. Asegúrate de que el archivo es válido.",
+            "clearStringArtErrorToast": "Ocurrió un error al borrar todos los datos."
+        },
+        "info": {
+            "title": "Información",
+            "dataCleared": "Todos los datos del archivo han sido borrados.",
+            "firstStepReachedToast": "Has llegado al primer paso.",
+            "lastStepReachedToast": "Has llegado al último paso."
+        }
     }
 }

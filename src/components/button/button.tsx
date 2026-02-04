@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./button.module.css";
 import { motion } from "motion/react"
+
+import styles from "./button.module.css";
 import type { ButtonProps } from "./button.types";
 
 export default function Button({ onClick, iconLeft, iconRight, label, variant: buttonStyle = "primary", className, disabled }: ButtonProps) {

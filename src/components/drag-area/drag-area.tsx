@@ -1,5 +1,7 @@
 import { useState, type DragEvent, type ReactNode } from "react";
+
 import style from "./drag-area.module.css";
+
 type DragAreaProps = {
     children?: ReactNode
     onDropFiles?: (files: File[]) => void

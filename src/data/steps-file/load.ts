@@ -1,5 +1,6 @@
-import type { StringArtInfo } from "../../@types/string-art-info";
-import type { StringArtStep } from "../../@types/string-art-step";
+import type { StringArtInfo } from "@/types/string-art-info";
+import type { StringArtStep } from "@/types/string-art-step";
+
 import { getDatabaseInstance, INDEXED_DB_STRING_ART_INFO, INDEXED_DB_STRING_ART_STEPS, promisifyRequest } from "./helper";
 
 export async function loadStringArtData(): Promise<{ info: StringArtInfo, steps: StringArtStep[] } | null> {

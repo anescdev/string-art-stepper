@@ -1,10 +1,12 @@
 import { use, useRef, useState } from "react"
-import { StringArtInfoContext } from "../../contexts"
-import styles from "./metainfo.module.css"
 import { faAngleDown, faAngleUp, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import { AnimatePresence, motion, type Variants } from "motion/react"
-import Button from "../button/button"
 import { useTranslation } from "react-i18next"
+
+import { StringArtInfoContext } from "@/contexts/string-art-info"
+import Button from "@/components/button/button"
+
+import styles from "./metainfo.module.css"
 
 type MetaInfoProps = {
     className?: string
@@ -23,7 +25,7 @@ export default function MetaInfo({ className }: MetaInfoProps) {
 
     return (
         <section ref={sectionRef} className={className}>
-            <Button onClick={() => setShowInfo(!showInfo)} iconLeft={faInfoCircle} iconRight={showInfo ? faAngleUp : faAngleDown} label={t("toolbar.showMetadataButton")} variant="tertiary"/>
+            <Button onClick={() => setShowInfo(!showInfo)} iconLeft={faInfoCircle} iconRight={showInfo ? faAngleUp : faAngleDown} label={t("toolbar.showMetadataButton")} variant="tertiary" />
             <AnimatePresence>
                 {showInfo && <motion.div className={styles.infoBox}
                     variants={animationVariants}
@@ -33,9 +35,15 @@ export default function MetaInfo({ className }: MetaInfoProps) {
                     transition={{ type: "spring", bounce: 0.2, duration: 0.25 }}
                 >
                     <h3 className={styles.infoBoxTitle}>{t("metadata.title")}</h3>
-                    <p><b>{t("metadata.filenameLabel")}</b> {metaData?.fileName}</p>
-                    <p><b>{t("metadata.numNailsLabel")}</b> {metaData?.pins}</p>
-                    <p><b>{t("metadata.numStepsLabel")}</b> {metaData?.lines}</p>
+                    {
+                        metaData
+                            ? <>
+                                <p><b>{t("metadata.filenameLabel")}</b> {metaData?.fileName}</p>
+                                <p><b>{t("metadata.numNailsLabel")}</b> {metaData?.pins}</p>
+                                <p><b>{t("metadata.numStepsLabel")}</b> {metaData?.lines}</p>
+                            </>
+                            : <p>{t("metadata.noData")}</p>
+                    }
                 </motion.div>}
             </AnimatePresence>
         </section>

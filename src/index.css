@@ -2,6 +2,7 @@
     font-family: "TitleFont";
     src: url(/fonts/Patua_One/PatuaOne-Regular.ttf) format("truetype");
 }
+
 @font-face {
     font-family: "TextFont";
     src: url(/fonts/Baloo_2/Baloo2-VariableFont_wght.ttf) format("truetype");
@@ -49,7 +50,8 @@
     --color-error-text: #640E02;
     --color-warning-border: #F1B527;
     --color-warning-background: #FEF2D7;
-    --color-warning-text: #02643D;
+    --color-warning-text: #644602;
+    --color-success-text: #02643D;
     --color-success-border: #27F1A0;
     --color-success-background: #D7FEEE;
     --color-text-dark: #2F2F2F;
@@ -62,6 +64,7 @@
     --spacing-3: 1rem;
     --spacing-4: 1.5rem;
     --spacing-5: 2.0rem;
+    /** Toasts **/
 }
 
 * {
@@ -70,7 +73,13 @@
     margin: 0;
     box-sizing: border-box;
 }
-h1, h2, h3, h4, h5, h6 {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "TitleFont", sans-serif;
     color: var(--color-text-dark);
 }
@@ -83,7 +92,8 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
 }
-#root > * {
+
+#root>*:nth-child(n+2) {
     padding: var(--padding);
     width: 60%;
     box-shadow: var(--color-neutral-500) 0px 4px 6px -1px;
@@ -91,7 +101,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media screen and (max-width: 810px) {
-    #root > * {
+    #root>* {
         width: 90%;
     }
 }

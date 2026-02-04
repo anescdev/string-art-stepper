@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react"
-import { FileUploadedEvent } from "../../events/file-uploaded";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
-import Button from "../button/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
+
+import DragArea from "@/components/drag-area/drag-area";
+import Button from "@/components/button/button";
+import { FileUploadedEvent } from "@/events/file-uploaded";
 
 import style from "./string-art-form.module.css";
-import DragArea from "../drag-area/drag-area";
-import { useTranslation } from "react-i18next";
 
 export default function StringArtForm() {
   const [t] = useTranslation();

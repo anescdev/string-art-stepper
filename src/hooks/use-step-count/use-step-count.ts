@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { loadStepsCount } from "../data/steps-count";
-import { ClearedDataEvent } from "../events/cleared-data";
+
+import { loadStepsCount } from "@/data/steps-count";
+import { ClearedDataEvent } from "@/events/cleared-data";
 
 export function useStepCount() {
     const [savedStep, setSavedStep] = useState<number>(loadStepsCount());

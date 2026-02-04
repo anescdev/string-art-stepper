@@ -1,8 +1,8 @@
 import { use } from "react";
-import { StringArtInfoContext } from "../../contexts";
-import { ClearedDataEvent } from "../../events/cleared-data";
-import ClearButton from "../clear-button/clear-button";
-import MetaInfo from "../metainfo/metainfo";
+import { StringArtInfoContext } from "@/contexts/string-art-info";
+import { ClearedDataEvent } from "@/events/cleared-data";
+import ClearButton from "@/components/clear-button/clear-button";
+import MetaInfo from "@/components/metainfo/metainfo";
 import styles from "./toolbar.module.css"
 
 export default function Toolbar() {

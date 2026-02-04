@@ -1,6 +1,7 @@
-import type { StringArtInfo } from "../../@types/string-art-info";
-import type { StringArtStep } from "../../@types/string-art-step";
-import { SavingDataError } from "../../errors/saving-data-error";
+import type { StringArtInfo } from "@/types/string-art-info";
+import type { StringArtStep } from "@/types/string-art-step";
+import { SavingDataError } from "@/errors/saving-data-error";
+
 import { getDatabaseInstance, INDEXED_DB_STRING_ART_INFO, INDEXED_DB_STRING_ART_STEPS, promisifyRequest } from "./helper";
 
 export async function saveStringArtData(info: StringArtInfo, steps: StringArtStep[]) {

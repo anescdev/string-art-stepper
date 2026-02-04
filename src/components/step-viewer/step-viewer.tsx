@@ -1,34 +1,36 @@
-import { use, useEffect, useRef, useState } from "react"
-import { StringArtStepsContext } from "../../contexts"
-import styles from "./step-viewer.module.css"
+import {  use, useCallback, useEffect, useRef, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import type { StringArtStep } from "../../@types/string-art-step";
 import { AnimatePresence, motion, useMotionValue } from 'motion/react'
-import { saveStep } from "../../data/steps-count";
 import { useTranslation } from "react-i18next";
 
+import { saveStepCount } from "@/data/steps-count"
+import { StringArtStepsContext } from "@/contexts/string-art-steps";;
+
+import styles from "./step-viewer.module.css"
+
 export type StepViewerProps = {
-    step?: number,
-    stepsData?: StringArtStep[]
+    initialStepIndex: number
 }
 
-export default function StepViewer({ step = 0, stepsData }: StepViewerProps) {
-    const steps = stepsData ?? use(StringArtStepsContext);
+export default function StepViewer({ initialStepIndex = 0 }: StepViewerProps) {
+    const steps = use(StringArtStepsContext);
     const [t] = useTranslation();
-    const [currentStep, setCurrentStep] = useState(step);
+    const [currentStep, setCurrentStep] = useState(Math.min(Math.max(initialStepIndex, 0), steps.length - 1));
     const direction = useMotionValue<1 | -1>(1);
     const animating = useRef(false)
-    const previousButton = () => {
+    
+    const previousButton = useCallback(() => {
         if (animating.current) return;
         setCurrentStep(currentStep => Math.max(currentStep - 1, 0));
         direction.jump(-1, true)
-    }
-    const nextButton = () => {
+    }, [direction]);
+    const nextButton = useCallback(() => {
         if (animating.current) return;
         setCurrentStep(currentStep => Math.min(currentStep + 1, steps.length - 1));
         direction.jump(1, true)
-    }
+    }, [direction, steps.length]);
+
     useEffect(() => {
         const keyboardHandler = (e: KeyboardEvent) => {
             if (e.key === "ArrowLeft" && currentStep > 0) {
@@ -45,11 +47,12 @@ export default function StepViewer({ step = 0, stepsData }: StepViewerProps) {
             window.removeEventListener("keydown", keyboardHandler);
         }
 
-    }, [currentStep]);
+    }, [currentStep, steps.length, previousButton, nextButton]);
     useEffect(() => {
-        saveStep(currentStep);
+        saveStepCount(currentStep);
     }, [currentStep]);
-
+    
+    if (steps.length === 0) return null;
     return (
         <div className={styles.viewer}>
             <motion.div initial={{ y: -40 }} animate={{ y: 0 }} transition={{ type: "spring", bounce: 0.30, duration: 0.25 }} className={styles.stepCounter}>
@@ -62,7 +65,7 @@ export default function StepViewer({ step = 0, stepsData }: StepViewerProps) {
                     onClick={previousButton}
                     aria-label={t("stepViewer.previousStepButton")}
                     className={styles.previousButton}
-                    whileTap={{scale: 0.9}}>
+                    whileTap={{ scale: 0.9 }}>
                     <FontAwesomeIcon icon={faAngleLeft} />
                 </motion.button>
                 <AnimatePresence initial={false} mode="popLayout" >
@@ -82,7 +85,7 @@ export default function StepViewer({ step = 0, stepsData }: StepViewerProps) {
                     onClick={nextButton}
                     aria-label={t("stepViewer.nextStepButton")}
                     className={styles.nextButton}
-                    whileTap={{scale: 0.9}}>
+                    whileTap={{ scale: 0.9 }}>
                     <FontAwesomeIcon icon={faAngleRight} />
                 </motion.button>
             </div>

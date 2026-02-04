@@ -1,13 +1,14 @@
 import { use } from "react";
-import { StringArtStepsContext } from "../../contexts";
-import StepViewer from "../../components/step-viewer/step-viewer";
-import StringArtForm from "../../components/string-art-form/string-art-form";
-import { useStepCount } from "../../hooks/useStepCount";
+
+import StepViewer from "@/components/step-viewer/step-viewer";
+import StringArtForm from "@/components/string-art-form/string-art-form";
+import { useStepCount } from "@/hooks/use-step-count/use-step-count";
+import { StringArtInfoContext } from "@/contexts/string-art-info";
 
 export default function MainPage() {
     const step = useStepCount();
-    const data = use(StringArtStepsContext);
-    if (data.length > 0) 
-        return <StepViewer step={step} stepsData={data} />
+    const hasData = use(StringArtInfoContext) !== null;
+    if (hasData) 
+        return <StepViewer initialStepIndex={step} />
     return <StringArtForm />
 }
