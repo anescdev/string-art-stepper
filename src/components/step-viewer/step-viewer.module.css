@@ -92,6 +92,15 @@
 .stepControls .nextButton:active {
     color: var(--color-primary-600);
 }
+.stepControls .finishButton {
+    color: hsl(156, 88%, 55%);
+}
+.stepControls .finishButton:hover {
+    color: hsl(156, 88%, 60%);
+}
+.stepControls .finishButton:active {
+    color: hsl(156, 88%, 50%);
+}
 
 @media screen and (max-width: 600px) {
     .viewer .step {

@@ -1,6 +1,6 @@
-import {  use, useCallback, useEffect, useRef, useState } from "react"
+import { use, useCallback, useEffect, useRef, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { AnimatePresence, motion, useMotionValue } from 'motion/react'
 import { useTranslation } from "react-i18next";
 
@@ -10,16 +10,18 @@ import { StringArtStepsContext } from "@/contexts/string-art-steps";;
 import styles from "./step-viewer.module.css"
 
 export type StepViewerProps = {
-    initialStepIndex: number
+    initialStepIndex: number,
+    onFinished?: () => void
 }
 
-export default function StepViewer({ initialStepIndex = 0 }: StepViewerProps) {
+export default function StepViewer({ initialStepIndex = 0, onFinished }: StepViewerProps) {
     const steps = use(StringArtStepsContext);
-    const [t] = useTranslation();
     const [currentStep, setCurrentStep] = useState(Math.min(Math.max(initialStepIndex, 0), steps.length - 1));
+    const canFinish = currentStep === steps.length - 1;
+    const [t] = useTranslation();
     const direction = useMotionValue<1 | -1>(1);
     const animating = useRef(false)
-    
+
     const previousButton = useCallback(() => {
         if (animating.current) return;
         setCurrentStep(currentStep => Math.max(currentStep - 1, 0));
@@ -30,6 +32,9 @@ export default function StepViewer({ initialStepIndex = 0 }: StepViewerProps) {
         setCurrentStep(currentStep => Math.min(currentStep + 1, steps.length - 1));
         direction.jump(1, true)
     }, [direction, steps.length]);
+    const finishStringArt = useCallback(() => {
+        if (onFinished) onFinished();
+    }, [onFinished]);
 
     useEffect(() => {
         const keyboardHandler = (e: KeyboardEvent) => {
@@ -37,9 +42,12 @@ export default function StepViewer({ initialStepIndex = 0 }: StepViewerProps) {
                 previousButton();
                 return;
             }
-            if (e.key === "ArrowRight" && currentStep < steps.length - 1) {
-                nextButton();
-                return;
+            if (e.key === "ArrowRight") {
+                if (canFinish) {
+                    finishStringArt()
+                    return
+                }
+                nextButton()
             }
         }
         window.addEventListener("keydown", keyboardHandler);
@@ -47,11 +55,11 @@ export default function StepViewer({ initialStepIndex = 0 }: StepViewerProps) {
             window.removeEventListener("keydown", keyboardHandler);
         }
 
-    }, [currentStep, steps.length, previousButton, nextButton]);
+    }, [currentStep, canFinish, steps.length, previousButton, nextButton, finishStringArt]);
     useEffect(() => {
         saveStepCount(currentStep);
     }, [currentStep]);
-    
+
     if (steps.length === 0) return null;
     return (
         <div className={styles.viewer}>
@@ -81,12 +89,11 @@ export default function StepViewer({ initialStepIndex = 0 }: StepViewerProps) {
                     </motion.div>
                 </AnimatePresence>
                 <motion.button
-                    disabled={currentStep >= steps.length - 1}
-                    onClick={nextButton}
-                    aria-label={t("stepViewer.nextStepButton")}
-                    className={styles.nextButton}
+                    onClick={canFinish ? finishStringArt : nextButton}
+                    aria-label={t(canFinish ? "stepViewer.finishButton" : "stepViewer.nextStepButton")}
+                    className={canFinish ? styles.finishButton : styles.nextButton}
                     whileTap={{ scale: 0.9 }}>
-                    <FontAwesomeIcon icon={faAngleRight} />
+                    <FontAwesomeIcon icon={canFinish ? faCircleCheck : faAngleRight} />
                 </motion.button>
             </div>
         </div>

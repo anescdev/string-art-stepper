@@ -7,9 +7,9 @@ type DragAreaProps = {
     onDropFiles?: (files: File[]) => void
     accept?: string[]
     disabled?: boolean
-}
+    className?: string}
 
-export default function DragArea({ children, onDropFiles, accept, disabled }: DragAreaProps) {
+export default function DragArea({ children, onDropFiles, accept, disabled, className }: DragAreaProps) {
     const [dragging, setDragging] = useState(false);
     const onDrop = (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault()
@@ -30,9 +30,12 @@ export default function DragArea({ children, onDropFiles, accept, disabled }: Dr
         e.preventDefault();
         setDragging(false);
     }
-    return (<div
+    return (
+    <div
         onDrop={disabled ? undefined : onDrop}
         onDragOver={disabled ? undefined : onDragOver}
         onDragLeave={disabled ? undefined : onDragLeave}
-        className={`${style.dragArea} ${dragging && !disabled ? style.dragging : ""}`}>{children}</div>)
+        className={`${style.dragArea} ${dragging && !disabled ? style.dragging : ""} ${className || ""}`}>{children}
+    </div>
+    )
 }

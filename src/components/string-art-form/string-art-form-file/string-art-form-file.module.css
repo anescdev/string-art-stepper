@@ -1,0 +1,27 @@
+.fileItem {
+    border: 2px dashed var(--color-neutral-600);
+    border-radius: var(--radius);
+    padding: var(--padding);
+    position: relative;
+}
+
+.fileItem h2 {
+    font-weight: 100;
+    font-size: 1.3rem;
+}
+
+.delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: hsl(0, 53%, 50%);
+    cursor: pointer;
+}
+
+.delete:hover {
+    color: hsl(0, 53%, 55%);
+}
+
+.delete:active {
+    color: hsl(0, 53%, 45%);
+}

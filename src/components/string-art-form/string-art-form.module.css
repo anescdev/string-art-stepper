@@ -5,11 +5,8 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    gap: var(--padding);
     width: 100%;
     margin: var(--spacing-2) auto var(--spacing-2) auto;
     text-align: center;
-}
-
-.hide {
-    display: none;
 }

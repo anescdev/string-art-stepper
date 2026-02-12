@@ -6,7 +6,8 @@
     "fileForm": {
         "label": "Arrastra el archivo JSON aquí",
         "smallLabel": "o haz clic aquí para seleccionar el archivo",
-        "buttonLabel": "Subir archivo"
+        "selectFile": "Seleccionar archivo",
+        "uploadFile": "Subir archivo"
     },
     "toolbar": {
         "clearStringArtButton": "Limpiar todos los datos",
@@ -15,7 +16,8 @@
     "stepViewer": {
         "stepsLabel": "Paso Nº:",
         "previousStepButton": "Paso anterior",
-        "nextStepButton": "Siguiente paso"
+        "nextStepButton": "Siguiente paso",
+        "finishButton": "Finalizar"
     },
     "metadata": {
         "title": "Información general",
@@ -33,8 +35,10 @@
         "info": {
             "title": "Información",
             "dataCleared": "Todos los datos del archivo han sido borrados.",
-            "firstStepReachedToast": "Has llegado al primer paso.",
-            "lastStepReachedToast": "Has llegado al último paso."
+            "firstStepReachedToast": "Has llegado al primer paso."
+        },
+        "done": {
+            "finished": "¡Has llegado al final!"
         }
     }
 }

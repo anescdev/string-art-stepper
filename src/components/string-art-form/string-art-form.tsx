@@ -1,52 +1,33 @@
-import { useEffect, useRef, useState } from "react"
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react"
 import { useTranslation } from "react-i18next";
 
-import DragArea from "@/components/drag-area/drag-area";
 import Button from "@/components/button/button";
 import { FileUploadedEvent } from "@/events/file-uploaded";
 
 import style from "./string-art-form.module.css";
+import FileInput from "./file-input/file-input";
+import StringArtFormFile from "./string-art-form-file/string-art-form-file";
+import { faFileArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 export default function StringArtForm() {
   const [t] = useTranslation();
-  const [disabled, setDisabled] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
 
-  useEffect(() => {
-    const fileInput = fileInputRef.current;
-    const onCancel = () => {
-      setDisabled(false);
-    }
-    fileInput?.addEventListener("cancel", onCancel);
-    return () => {
-      fileInput?.removeEventListener("cancel", onCancel);
-    } 
-  }, []);
-
-  const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.currentTarget.files || e.currentTarget.files.length === 0) return;
-    document.dispatchEvent(new FileUploadedEvent(e.currentTarget.files.item(0)!))
-  }
-  const onDropFiles = (file: File[]) => {
-    document.dispatchEvent(new FileUploadedEvent(file.at(0)!))
-  }
-  const uploadFile = () => {
-    if (!fileInputRef.current) return;
-    fileInputRef.current.showPicker();
-    setDisabled(true);
+  const onUploadedFile = () => {
+    document.dispatchEvent(new FileUploadedEvent(uploadedFile!));
   }
 
-  return (
-    <DragArea disabled={disabled} onDropFiles={onDropFiles} accept={["application/json"]}>
+  if (uploadedFile) {
+    return (
       <article className={style.stringArtForm}>
-        <FontAwesomeIcon icon={faUpload} size="6x" />
-        <h2>{t("fileForm.label")}</h2>
-        <p>{t("fileForm.smallLabel")}</p>
-        <input type="file" ref={fileInputRef} className={style.hide} onChange={onChangeFile} accept="application/json" />
-        <Button onClick={uploadFile} iconLeft={faUpload} label={t("fileForm.buttonLabel")} />
+        <StringArtFormFile file={uploadedFile} onClickDelete={() => setUploadedFile(null)}/>
+        <Button onClick={onUploadedFile} label={t("fileForm.uploadFile")} iconLeft={faFileArrowUp}/>
       </article>
-    </DragArea>
+    );
+  }
+  return (
+    <article className={style.stringArtForm}>
+      <FileInput onFileUploaded={files => setUploadedFile(files.at(0) || null)} />
+    </article>
   );
 }

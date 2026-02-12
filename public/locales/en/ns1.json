@@ -6,7 +6,8 @@
     "fileForm": {
         "label": "Drag the JSON file here",
         "smallLabel": "or click here to select the file",
-        "buttonLabel": "Upload file"
+        "selectFile": "Select file",
+        "uploadFile": "Upload file"
     },
     "toolbar": {
         "clearStringArtButton": "Clear all data",
@@ -15,7 +16,8 @@
     "stepViewer": {
         "stepsLabel": "Steps:",
         "previousStepButton": "Previous Step",
-        "nextStepButton": "Next Step"
+        "nextStepButton": "Next Step",
+        "finishButton": "Finish"
     },
     "metadata": {
         "title": "General Information",
@@ -33,8 +35,10 @@
         "info": {
             "title": "Information",
             "dataCleared": "All file data has been cleared.",
-            "firstStepReachedToast": "You have reached the first step.",
-            "lastStepReachedToast": "You have reached the last step."
+            "firstStepReachedToast": "You have reached the first step."
+        },
+        "done": {
+            "finished": "You have finished!"
         }
     }
 }

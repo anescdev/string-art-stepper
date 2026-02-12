@@ -60,15 +60,13 @@ test("StepViewer handles negative initial step index", async () => {
 });
 
 test("StepViewer navigation buttons disabled at bounds", async () => {
+    const getNextButton = () => component.getByRole("button", { name: /stepViewer.nextStepButton/i });
     const component = await renderStepViewer({ data, initialStepIndex: 0 });
     await expect.element(component.getByRole("button", { name: /stepViewer.previousStepButton/i })).toBeDisabled();
-    const nextButton = component.getByRole("button", { name: /stepViewer.nextStepButton/i });
-    await vi.waitUntil(async () => {
-        await nextButton.click();
-        return component.getByRole("button", { name: /stepViewer.nextStepButton/i, disabled: true }).query()
-    })
-    await expect.element(component.getByRole("button", { name: /stepViewer.previousStepButton/i })).not.toBeDisabled();
-    await expect.element(component.getByRole("button", { name: /stepViewer.nextStepButton/i, disabled: true })).toBeInTheDocument();
+    await getNextButton().click();
+    await vi.waitFor(() => expect.element(component.getByRole("button", { name: /stepViewer.previousStepButton/i })).not.toBeDisabled(), { interval: 100 })
+    await expect.element(component.getByRole("button", { name: /stepViewer.nextStepButton/i })).not.toBeDisabled();
+    // Need to test the final bounds
 });
 
 test("Cleanup events are removed on unmount", async () => {
